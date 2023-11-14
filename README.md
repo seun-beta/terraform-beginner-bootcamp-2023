@@ -53,3 +53,9 @@ This file **should not be committed to Version Control** as this file can contai
 
 #### Terraform Directory 
 The directory that contains the downloaded binaries of the Terraform Providers. 
+
+Run `terraform destroy` to destroy already provisioned instrastructure. Terraform would look at the `terraform.tfstate` file and destroy the provisioned infrastructure in the file.  
+
+You can also add the `--auto-approve` flag when running `terraform destroy` to automatically destroy provisioned infrastructure.  
+
+`terraform destroy --auto-approve` 
