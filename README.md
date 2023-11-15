@@ -56,6 +56,48 @@ The directory that contains the downloaded binaries of the Terraform Providers.
 
 Run `terraform destroy` to destroy already provisioned instrastructure. Terraform would look at the `terraform.tfstate` file and destroy the provisioned infrastructure in the file.  
 
-You can also add the `--auto-approve` flag when running `terraform destroy` to automatically destroy provisioned infrastructure.  
+#### Terraform Auto Approve
+You can also add the `--auto-approve` flag when running `terraform destroy` to automatically destroy provisioned infrastructure. The complete command is `terraform destroy --auto-approve` 
 
-`terraform destroy --auto-approve` 
+#### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch a WYSIWYG view to generate a token. 
+
+The first step is to press `p` then generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+After that, press `q` on the WYSIWYG view which would close it and open a new prompt with 
+```
+Token for app.terraform.io:
+  Enter a value: 
+```
+
+Paste the token gotten from Terraform Cloud and it would automatically be added to `/home/gitpod/.terraform.d/credentials.tfrc.json` 
+
+However if the step described above does not work, another workaround is to manually generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+``````
