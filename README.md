@@ -101,3 +101,5 @@ Provide the following code (replace your token in the file):
   }
 }
 ``````
+
+The workaround has been automated using the following bash script [bin/generate_tfrc_credentials.sh](bin/generate_tfrc_credentials.sh)
